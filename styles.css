@@ -46,6 +46,27 @@ body {
   color: #666;
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
+}
+
 .card {
   flex: 1;
   display: flex;
@@ -66,7 +87,7 @@ iframe {
   border: none;
 }
 
-.card-buttons {
+.buttons-3d {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -74,19 +95,55 @@ iframe {
   padding: 10px;
 }
 
-.action-btn {
+.btn-3d {
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
-  background-color: #007bff;
+  background-color: #4CAF50;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
 }
 
-.action-btn:hover {
-  background-color: #0056b3;
+.btn-3d:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  transform: translateZ(-1px);
+  transition: all 0.3s ease;
+}
+
+.btn-3d:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateZ(-2px);
+  transition: all 0.3s ease;
+}
+
+.btn-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d:hover:before {
+  height: 6px;
+}
+
+.btn-3d:hover:after {
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .install-row {
