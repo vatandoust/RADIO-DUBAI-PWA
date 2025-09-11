@@ -31,5 +31,34 @@
         <iframe id="player" title="Radio Player" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
       </div>
     </section>
-    <div class="buttons-3d">
-      <button class="btn-3d">فروشگاه</button>
+    <div class="install-row" id="installRow" hidden>
+      <button id="btnInstall" class="install-btn">نصب اپ</button>
+    </div>
+    <footer class="foot">© RADIO DUBIA PERSIAN 2025</footer>
+  </main>
+  <script>
+    const iframe = document.getElementById('player');
+    iframe.src = window.AZURA_EMBED_URL;
+    let deferredPrompt;
+    const installRow = document.getElementById('installRow');
+    const btnInstall = document.getElementById('btnInstall');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installRow.hidden = false;
+    });
+    btnInstall?.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installRow.hidden = true;
+    });
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
+</body>
+</html>
