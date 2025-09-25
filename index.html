@@ -4,22 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>RADIO DUBIA PERSIAN</title>
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" sizes="192x192" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
   <script>
-    // استریم پایدار شما (Shoutcast با پسوند mp3)
-    window.STREAM_URL = "https://a10.asurahosting.com:7070/radio.mp3";
-    // اگر همچنان می‌خواهی iframe رسمی AzuraCast را روی دسکتاپ نشان بدهی:
     window.AZURA_EMBED_URL = "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
   </script>
 </head>
 <body>
-  <!-- ربات (فقط یک‌بار لود شود) -->
-  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
-
+   <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
   <main class="wrap">
     <header class="brand">
       <div class="logo">RD</div>
@@ -28,79 +23,21 @@
         <p>Live • Best Hits 24/7</p>
       </div>
     </header>
-
     <section class="card">
-      <!-- iframe فقط برای دسکتاپ (اختیاری) -->
-      <div class="frame-wrap" id="frameWrap" style="display:none">
-        <iframe id="player" title="Radio Player"
-                loading="lazy" allow="autoplay" referrerpolicy="no-referrer"
-                style="width:100%;height:420px;border:0;border-radius:16px;overflow:hidden"></iframe>
-      </div>
-
-      <!-- پلیر بومی برای موبایل (و دسکتاپ در صورت تمایل) -->
-      <div id="mobile-player" style="margin-top:12px">
-        <button id="btnPlay"
-                style="width:100%;height:56px;border-radius:12px;font-weight:800;border:0;
-                       background:#6ea8ff;color:#0b1020">▶ پخش رادیو</button>
-
-        <audio id="audio" controls preload="none" playsinline
-               style="width:100%;margin-top:8px;border-radius:12px;display:none">
-          <source id="srcMp3" src="" type="audio/mpeg" />
-          مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
-        </audio>
+      <div class="frame-wrap">
+        <iframe id="player" title="Radio Player" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
       </div>
     </section>
-
+    
     <div class="install-row" id="installRow" hidden>
       <button id="btnInstall" class="install-btn">نصب اپ</button>
     </div>
-
     <footer class="foot">© RADIO DUBIA PERSIAN 2025</footer>
   </main>
-
+  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
   <script>
-    // اگر پهنای صفحه بزرگ بود (مثلاً دسکتاپ)، iframe رسمی را هم نشان بده
-    const isDesktop = () => window.matchMedia("(min-width: 900px)").matches;
-    const frameWrap = document.getElementById("frameWrap");
-    const iframe    = document.getElementById("player");
-    if (isDesktop()) {
-      frameWrap.style.display = "block";
-      iframe.src = window.AZURA_EMBED_URL;
-    }
-
-    // پلیر بومی
-    const STREAM_URL = window.STREAM_URL;
-    const btn   = document.getElementById('btnPlay');
-    const audio = document.getElementById('audio');
-    const src   = document.getElementById('srcMp3');
-
-    async function startPlay() {
-      try {
-        // ضد کش برای بافرهای قدیمی
-        const bust = (STREAM_URL.includes("?") ? "&" : "?") + "t=" + Date.now();
-        src.src = STREAM_URL + bust;
-        audio.load();                 // برای iOS بسیار مهم
-        await audio.play();           // بعد از لمس کاربر
-        audio.style.display = 'block';
-        btn.textContent = '⏸ توقف پخش';
-      } catch (e) {
-        console.warn('play error', e);
-      }
-    }
-    function stopPlay() {
-      audio.pause();
-      btn.textContent = '▶ پخش رادیو';
-    }
-    // هم click هم touchstart برای سازگاری کامل موبایل
-    ['click','touchstart'].forEach(ev => {
-      btn.addEventListener(ev, async (e) => {
-        e.preventDefault();
-        if (audio.paused) await startPlay();
-        else stopPlay();
-      }, { passive: false });
-    });
-
-    // PWA نصب
+    const iframe = document.getElementById('player');
+    iframe.src = window.AZURA_EMBED_URL;
     let deferredPrompt;
     const installRow = document.getElementById('installRow');
     const btnInstall = document.getElementById('btnInstall');
@@ -122,5 +59,6 @@
       });
     }
   </script>
+ 
 </body>
 </html>
