@@ -27,7 +27,7 @@
         <iframe id="player" title="Radio Player" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
       </div>
     </section>
-   
+   <button onclick="document.getElementById('player').contentWindow.postMessage('play', '*')">پخش</button>
     <div class="install-row" id="installRow" hidden>
       <button id="btnInstall" class="install-btn">نصب اپ</button>
     </div>
