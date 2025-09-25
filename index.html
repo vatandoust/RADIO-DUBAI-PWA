@@ -3,49 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>RADIO DUBIA PERSIAN</title>
-  <meta name="theme-color" content="#ffffff" />
+  <title>Radio Dubai Persian</title>
+  <meta name="theme-color" content="#0b1020" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" sizes="192x192" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- آدرس صحیح سرور (Public Page Embed) -->
   <script>
-    window.AZURA_EMBED_URL = "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
+    // Embed رسمی آزوراکست (پوسته روشن)
+    window.AZURA_EMBED_URL =
+      "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
+    // فالو‌ بک MP3 پایدار (Shoutcast – پورت 7070)
+    window.STREAM_URL = "https://a10.asurahosting.com:7070/radio.mp3";
   </script>
 </head>
 <body>
-   <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
+  <!-- ربات (فقط یک بار لود شود) -->
+  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
+
   <main class="wrap">
     <header class="brand">
       <div class="logo">RD</div>
       <div class="titles">
-        <h1>RADIO DUBIA PERSIAN</h1>
+        <h1>Radio Dubai Persian</h1>
         <p>Live • Best Hits 24/7</p>
       </div>
     </header>
+
+    <!-- پلیر رسمی (Embed) -->
     <section class="card">
       <div class="frame-wrap">
-        <iframe id="player" title="Radio Player" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
+        <iframe
+          id="player"
+          title="Radio Player"
+          loading="lazy"
+          allow="autoplay"
+          referrerpolicy="no-referrer"
+          style="width:100%;height:420px;border:0;border-radius:16px;overflow:hidden"
+        ></iframe>
+      </div>
+
+      <!-- فالو‌ بک ساده در صورت مشکل iframe -->
+      <div id="fallback" style="display:none; margin-top:12px;">
+        <audio id="audio" controls preload="none" style="width:100%; border-radius:12px;">
+          <source src="" type="audio/mpeg" />
+          مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+        </audio>
+        <div style="text-align:center;opacity:.8;font-size:13px;margin-top:6px">
+          اگر پلیر بالا لود نشد، از این دکمه استفاده کنید.
+        </div>
       </div>
     </section>
-    
+
     <div class="install-row" id="installRow" hidden>
       <button id="btnInstall" class="install-btn">نصب اپ</button>
     </div>
-    <footer class="foot">© RADIO DUBIA PERSIAN 2025</footer>
+
+    <footer class="foot">© Radio Dubai Persian 2025</footer>
   </main>
-  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
+
   <script>
-    const iframe = document.getElementById('player');
+    // ست کردن آدرس iframe
+    const iframe = document.getElementById("player");
     iframe.src = window.AZURA_EMBED_URL;
+
+    // اگر iframe طی 4 ثانیه لود نشد، فالو‌ بک MP3 را نمایش بده
+    const fbTimer = setTimeout(() => {
+      const fb = document.getElementById("fallback");
+      const audio = document.getElementById("audio");
+      fb.style.display = "block";
+      // ضد کش برای استریم
+      const bust = (window.STREAM_URL.includes("?") ? "&" : "?") + "t=" + Date.now();
+      audio.src = window.STREAM_URL + bust;
+    }, 4000);
+
+    iframe.addEventListener("load", () => clearTimeout(fbTimer));
+
+    // PWA نصب
     let deferredPrompt;
     const installRow = document.getElementById('installRow');
-    const btnInstall = document.getElementById('btnInstall');
+    const btnInstall  = document.getElementById('btnInstall');
+
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installRow.hidden = false;
     });
+
     btnInstall?.addEventListener('click', async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
@@ -53,12 +98,13 @@
       deferredPrompt = null;
       installRow.hidden = true;
     });
+
+    // سرویس‌ورکر
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js');
       });
     }
   </script>
- 
 </body>
 </html>
