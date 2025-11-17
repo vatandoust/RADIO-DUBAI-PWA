@@ -2,19 +2,75 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ROC DUBAI</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <!-- Title & basic SEO -->
+  <title>ROC DUBAI | رادیو دیجیتال دبی – بهترین هیت‌ها ۲۴/۷</title>
+  <meta
+    name="description"
+    content="ROC DUBAI یک رادیوی دیجیتال از دبی است که بهترین هیت‌ها، برنامه‌های ویژه و موسیقی لایو را ۲۴ ساعته پخش می‌کند. گوش بده، شریک شو و صدایت را به دبی و جهان برسان."
+  />
+  <meta
+    name="keywords"
+    content="ROC DUBAI, رادیو دبی, رادیو آنلاین دبی, رادیو فارسی دبی, رادیو دیجیتال, Dubai online radio, Dubai digital radio, Orvio Cast"
+  />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://orvio-cast.com/" />
+
+  <!-- App / PWA metadata -->
+  <meta name="application-name" content="ROC DUBAI" />
+  <meta name="apple-mobile-web-app-title" content="ROC DUBAI" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#ffffff" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Open Graph (Social preview) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ROC DUBAI" />
+  <meta property="og:title" content="ROC DUBAI | رادیو دیجیتال دبی – Live 24/7" />
+  <meta
+    property="og:description"
+    content="با ROC DUBAI همیشه در دبی روی فرکانس بهترین هیت‌ها و برنامه‌های ویژه باش. رادیوی دیجیتال ۲۴/۷ از دبی."
+  />
+  <meta property="og:url" content="https://orvio-cast.com/" />
+  <meta property="og:image" content="icons/icon-192.png" />
+  <meta property="og:locale" content="fa_IR" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ROC DUBAI | رادیو دیجیتال دبی – Live 24/7" />
+  <meta
+    name="twitter:description"
+    content="ROC DUBAI – رادیوی دیجیتال ۲۴ ساعته از دبی با بهترین هیت‌ها و برنامه‌های اختصاصی."
+  />
+  <meta name="twitter:image" content="icons/icon-192.png" />
+
+  <!-- Icons & manifest -->
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" sizes="192x192" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Player config -->
   <script>
-    window.AZURA_EMBED_URL = "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
+    window.AZURA_EMBED_URL =
+      "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
   </script>
 </head>
 <body>
-   <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
+  <script
+    defer
+    src="https://app.fastbots.ai/embed.js"
+    data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"
+  ></script>
+
   <main class="wrap">
     <header class="brand">
       <div class="logo">RD</div>
@@ -22,47 +78,61 @@
         <h1>ROC DUBAI</h1>
         <p>Live • Best Hits 24/7</p>
       </div>
-      <a href="http://www.internet-radio.com/station/radiodubaipersian/" target="_blank">
-🎧 Listen also on Internet-Radio.com
-</a>
-
+      <a
+        href="http://www.internet-radio.com/station/radiodubaipersian/"
+        target="_blank"
+      >
+        🎧 Listen also on Internet-Radio.com
+      </a>
     </header>
+
     <section class="card">
       <div class="frame-wrap">
-        <iframe id="player" title="Radio Player" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
+        <iframe
+          id="player"
+          title="Radio Player"
+          loading="lazy"
+          allow="autoplay"
+          referrerpolicy="no-referrer"
+        ></iframe>
       </div>
     </section>
-    
+
     <div class="install-row" id="installRow" hidden>
       <button id="btnInstall" class="install-btn">نصب اپ</button>
     </div>
+
     <footer class="foot">© ORVIO 2025</footer>
   </main>
-  <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
+
+  <!-- این اسکریپت FastBots را دوبار گذاشته بودی؛ یک‌بار کفایت می‌کند -->
   <script>
-    const iframe = document.getElementById('player');
+    const iframe = document.getElementById("player");
     iframe.src = window.AZURA_EMBED_URL;
+
     let deferredPrompt;
-    const installRow = document.getElementById('installRow');
-    const btnInstall = document.getElementById('btnInstall');
-    window.addEventListener('beforeinstallprompt', (e) => {
+    const installRow = document.getElementById("installRow");
+    const btnInstall = document.getElementById("btnInstall");
+
+    window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installRow.hidden = false;
     });
-    btnInstall?.addEventListener('click', async () => {
+
+    btnInstall?.addEventListener("click", async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
       await deferredPrompt.userChoice;
       deferredPrompt = null;
       installRow.hidden = true;
     });
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js');
+
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
       });
     }
   </script>
- 
 </body>
 </html>
