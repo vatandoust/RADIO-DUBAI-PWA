@@ -3,195 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ROC DUBAI - بهترین هیت‌ها 24/7</title>
-  <meta name="theme-color" content="#1a1a2e" />
+  <title>ROC DUBAI</title>
+  <meta name="theme-color" content="#ffffff" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="icons/icon-192.png" sizes="192x192" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  
-  <!-- فونت‌های حرفه‌ای -->
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #0f0f1a;
-      --card-bg: rgba(255, 255, 255, 0.08);
-      --gold: #f4d03f;
-      --blue: #3498db;
-      --text: #ecf0f1;
-      --text-light: #bdc3c7;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Vazirmatn', sans-serif;
-      background: linear-gradient(135deg, #0f0f1a 0%, #16213e 100%);
-      color: var(--text);
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* پس‌زمینه دبی با افکت پارالکس */
-    .bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://images.unsplash.com/photo-1512453979798-5ea1ed9865b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-      opacity: 0.25;
-      z-index: -2;
-      filter: blur(1px);
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(15, 15, 26, 0.7);
-      backdrop-filter: blur(8px);
-      z-index: -1;
-    }
-
-    .wrap {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      justify-content: space-between;
-    }
-
-    .brand {
-      text-align: center;
-      margin: 30px 0 20px;
-    }
-
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 15px;
-      background: linear-gradient(45deg, var(--gold), var(--blue));
-      color: #000;
-      font-weight: bold;
-      font-size: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(244, 208, 63, 0.6);
-      animation: pulse 3s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(244, 208, 63, 0.5); }
-      50% { box-shadow: 0 0 30px rgba(244, 208, 63, 0.9); }
-    }
-
-    .titles h1 {
-      font-family: 'Amiri', serif;
-      font-size: 2.5rem;
-      color: var(--gold);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      margin-bottom: 8px;
-    }
-
-    .titles p {
-      color: #a8e6cf;
-      font-size: 1.1rem;
-      font-weight: 300;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 20px;
-      margin: 20px 0;
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-    }
-
-    .frame-wrap {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    #player {
-      width: 100%;
-      height: 320px;
-      border: none;
-      display: block;
-    }
-
-    .install-row {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .install-btn {
-      background: linear-gradient(45deg, var(--gold), var(--blue));
-      color: #000;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(244, 208, 63, 0.4);
-    }
-
-    .install-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(244, 208, 63, 0.6);
-    }
-
-    .foot {
-      text-align: center;
-      color: var(--text-light);
-      font-size: 0.9rem;
-      padding: 20px 0;
-    }
-
-    /* لینک خارجی */
-    .brand a {
-      display: inline-block;
-      margin-top: 15px;
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-
-    .brand a:hover {
-      color: var(--gold);
-    }
-
-    /* موبایل */
-    @media (max-width: 480px) {
-      .titles h1 { font-size: 2rem; }
-      #player { height: 280px; }
-      .logo { width: 70px; height: 70px; font-size: 24px; }
-    }
-  </style>
-
+  <link rel="stylesheet" href="styles.css" />
   <script>
     window.AZURA_EMBED_URL = "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
   </script>
 </head>
 <body>
-  <div class="bg"></div>
-  <div class="overlay"></div>
-
+   <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
   <main class="wrap">
     <header class="brand">
       <div class="logo">RD</div>
@@ -200,56 +23,46 @@
         <p>Live • Best Hits 24/7</p>
       </div>
       <a href="http://www.internet-radio.com/station/radiodubaipersian/" target="_blank">
-        🎧 Listen also on Internet-Radio.com
-      </a>
-    </header>
+🎧 Listen also on Internet-Radio.com
+</a>
 
+    </header>
     <section class="card">
       <div class="frame-wrap">
         <iframe id="player" title="Radio Player" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
       </div>
     </section>
-
+    
     <div class="install-row" id="installRow" hidden>
       <button id="btnInstall" class="install-btn">نصب اپ</button>
     </div>
-
     <footer class="foot">© ORVIO 2025</footer>
   </main>
-
-  <!-- چت‌بات -->
   <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
-
-  <!-- اسکریپت‌های PWA -->
   <script>
     const iframe = document.getElementById('player');
     iframe.src = window.AZURA_EMBED_URL;
-
     let deferredPrompt;
     const installRow = document.getElementById('installRow');
     const btnInstall = document.getElementById('btnInstall');
-
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installRow.hidden = false;
     });
-
     btnInstall?.addEventListener('click', async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
+      await deferredPrompt.userChoice;
       deferredPrompt = null;
       installRow.hidden = true;
     });
-
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => {
-          console.log('SW registration failed: ', err);
-        });
+        navigator.serviceWorker.register('./sw.js');
       });
     }
   </script>
+ 
 </body>
 </html>
