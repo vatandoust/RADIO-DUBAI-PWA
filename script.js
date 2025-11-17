@@ -1,12 +1,12 @@
-// کد پخش رادیو (سفارشی برای تو)
+// پخش iframe
 const iframe = document.getElementById('player');
 iframe.src = window.AZURA_EMBED_URL;
 
-// نصب PWA (از فایل کارکن)
+// نصب PWA
+let deferredPrompt;
 const installRow = document.getElementById('installRow');
 const iosInstructions = document.getElementById('iosInstructions');
 const btnInstall = document.getElementById('btnInstall');
-let deferredPrompt;
 
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -29,11 +29,10 @@ if (isIOS && isSafari) {
   });
 }
 
-// چک PWA نصب شده (از فایل کارکن)
+// چک PWA نصب شده (از Radio Universal)
 const isPwaInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
 if (isPwaInstalled) {
-  // اگر نصب شده، چیزی پنهان کن اگر لازم
+  // اگر نصب شده، دکمه‌ها رو پنهان کن اگر لازم
 }
 
 // SW ثبت
