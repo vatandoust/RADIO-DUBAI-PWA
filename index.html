@@ -4,14 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>ROC DUBAI</title>
+  <meta name="description" content="رادیو دبی فارسی - استریم زنده 24/7">
+  <meta name="keywords" content="رادیو, دبی, فارسی, موزیک, آنلاین">
+  <meta name="author" content="ROC DUBAI">
+
+  <!-- PWA Meta -->
+  <meta name="application-name" content="ROC DUBAI">
   <meta name="theme-color" content="#ffffff" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="white">
   <meta name="apple-mobile-web-app-title" content="ROC DUBAI">
+
+  <!-- Favicon and Icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="shortcut icon" href="/icons/icon-192.png" type="image/png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+
+  <!-- Apple Touch Icons (اضافه بر اساس فایل کارکن) -->
+  <link rel="apple-touch-icon" href="/icons/icon-180.png">  <!-- بساز اگر نداری -->
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120.png">
+
+  <!-- Splash Screens iOS (اضافه بر اساس فایل کارکن — این‌ها رو بساز و آپلود کن) -->
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-2048-2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-1668-2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-1536-2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-1125-2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-1242-2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-828-1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-750-1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="/icons/apple-splash-640-1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+
+  <!-- Manifest -->
   <link rel="manifest" href="/manifest.json" />
-  <link rel="icon" href="/icons/icon-192.png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
   <link rel="stylesheet" href="/styles.css" />
+
   <script>
     window.AZURA_EMBED_URL = "https://a10.asurahosting.com/public/radio-dubai/embed?theme=light";
   </script>
@@ -25,7 +54,7 @@
         <p>Live • Best Hits 24/7</p>
       </div>
       <a href="http://www.internet-radio.com/station/radiodubaipersian/" target="_blank" rel="noopener">
-        Listen also on Internet-Radio.com
+        🎧 Listen also on Internet-Radio.com
       </a>
     </header>
 
@@ -35,10 +64,12 @@
       </div>
     </section>
 
+    <!-- دکمه نصب اندروید -->
     <div class="install-row" id="installRow" hidden>
       <button id="btnInstall" class="install-btn">نصب اپ</button>
     </div>
 
+    <!-- راهنمای iOS -->
     <div class="install-row ios-instructions" id="iosInstructions" hidden>
       <p>برای نصب: <strong>اشتراک‌گذاری</strong> ➜ <strong>افزودن به صفحه اصلی</strong></p>
     </div>
@@ -48,46 +79,7 @@
 
   <script defer src="https://app.fastbots.ai/embed.js" data-bot-id="cmfgdz0zp02bhpe1m9m6m5qpv"></script>
 
-  <script>
-    document.getElementById('player').src = window.AZURA_EMBED_URL;
+  <script src="/script.js"></script>  <!-- اضافه اسکریپت جدید -->
 
-    let deferredPrompt;
-    const installRow = document.getElementById('installRow');
-    const iosInstructions = document.getElementById('iosInstructions');
-    const btnInstall = document.getElementById('btnInstall');
-
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    if (isIOS && isSafari) {
-      setTimeout(() => iosInstructions.hidden = false, 3000);
-    } else {
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        installRow.hidden = false;
-      });
-
-      btnInstall?.addEventListener('click', async () => {
-        if (!deferredPrompt) return;
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') installRow.hidden = true;
-        deferredPrompt = null;
-      });
-    }
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW error:', err));
-      });
-    }
-  </script>
-
-  <style>
-    .install-row { text-align: center; margin: 16px; }
-    .install-btn { background:#007aff; color:white; border:none; padding:12px 24px; border-radius:8px; font-size:16px; cursor:pointer; }
-    .ios-instructions { background:#f0f0f0; padding:12px; border-radius:8px; font-size:14px; color:#333; }
-  </style>
 </body>
 </html>
